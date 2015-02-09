@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DinnerPlanner</string>
+    <string name="app_name">Dinner Planner</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     //launcher
+    <string name="title_activity_launcher_">Dinner Planner</string>
     <string name="p1_welcome">" Welcome to Donner Planner! \n\n Here you will be able to easily plan your dinner. \n\n On the next page start by selecting number of participants.\n Then select your courses.\n\n Watch Magic Happen!</string>
-
     // page2
     <string name="title_activity_page2">Dinner Planner</string>
+
 </resources>
