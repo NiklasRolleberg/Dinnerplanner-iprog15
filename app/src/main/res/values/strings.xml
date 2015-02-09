@@ -4,10 +4,15 @@
     <string name="app_name">Dinner Planner</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
     //launcher
     <string name="title_activity_launcher_">Dinner Planner</string>
     <string name="p1_welcome">" Welcome to Dinner Planner! \n\nHere you will be able to easily plan your dinner.\n\nOn the next page start by \nselecting number of participants. Then select your courses.\n\n Watch Magic Happen!</string>
+
     // page2
     <string name="title_activity_page2">Dinner Planner</string>
+
+    //page3
+    <string name="title_activity_page3_">Dinner Planner</string>
 
 </resources>

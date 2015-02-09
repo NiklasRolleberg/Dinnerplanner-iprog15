@@ -1,6 +1,7 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -73,5 +74,7 @@ public class Page2Activity extends Activity implements AdapterView.OnItemSelecte
     @Override
     public void onClick(View v) {
         System.out.println("KLICK!");
+        Intent intent = new Intent(this, Page3_Activity.class);
+        startActivity(intent);
     }
 }
