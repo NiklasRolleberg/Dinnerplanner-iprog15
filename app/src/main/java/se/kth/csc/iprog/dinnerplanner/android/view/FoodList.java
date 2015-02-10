@@ -13,11 +13,11 @@ public class FoodList {
 
         // store in the class the reference to the Android View
         this.view = LL;
-
-        LL.setBackgroundColor(Color.RED);
+        view.removeAllViews();
     }
 
-    public void AddFood(FoodView FV) {
+    public void add(FoodView FV) {
         view.addView(FV.food);
+        view.invalidate();
     }
 }

@@ -9,7 +9,8 @@ public class FoodView {
 
     View food;
 
-    public FoodView() {
+    public FoodView(View v) {
+        this.food = v;
         //fixa massa med maten
         System.out.println("FoodView Object created");
     }

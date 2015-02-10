@@ -1,6 +1,7 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,8 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.FoodList;
+import se.kth.csc.iprog.dinnerplanner.android.view.FoodView;
 
 
 public class Page2Activity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
@@ -41,13 +44,19 @@ public class Page2Activity extends Activity implements AdapterView.OnItemSelecte
         create.setOnClickListener(this);
 
         dropdown = (Spinner)findViewById(R.id.spinner1);
-        items = new String[]{"1", "2", "3","4","5"};
+        items = new String[]{"1", "2", "3", "4", "5"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);
 
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
+
+        TextView text = new TextView(getApplicationContext());
+        text.setText("test text");
+        FoodView test = new FoodView(text);
+        starter.add(test);
+
 
         //main
         main = new FoodList((LinearLayout) findViewById(R.id.foodlist02));

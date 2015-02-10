@@ -54,7 +54,6 @@ public class Launcher_Activity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-
         Intent intent = new Intent(this, Page2Activity.class);
         startActivity(intent);
     }
