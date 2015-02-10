@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,9 +54,23 @@ public class Page2Activity extends Activity implements AdapterView.OnItemSelecte
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
 
+        //TODO skapa en View som visar bilden och texten för mat (för all mat)
+
+        //enkelt exempel
+        LinearLayout container = new LinearLayout(getApplicationContext());
+        container.setOrientation(LinearLayout.VERTICAL);
+
+        ImageView IV = new ImageView(getApplicationContext());
+        IV.setImageResource(R.drawable.sourdough);
+
         TextView text = new TextView(getApplicationContext());
-        text.setText("test text");
-        FoodView test = new FoodView(text);
+        text.setTextColor(Color.BLACK);
+        text.setText("glass");
+
+        container.addView(IV);
+        container.addView(text);
+
+        FoodView test = new FoodView(container);
         starter.add(test);
 
 
