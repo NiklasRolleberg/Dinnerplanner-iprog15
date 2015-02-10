@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+
+import se.kth.csc.iprog.dinnerplanner.android.view.FoodList;
 
 
 public class Page2Activity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
@@ -21,6 +24,11 @@ public class Page2Activity extends Activity implements AdapterView.OnItemSelecte
 
     //button
     private Button create;
+
+    //food stuff
+    private FoodList starter;
+    private FoodList main;
+    private FoodList dessert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,15 @@ public class Page2Activity extends Activity implements AdapterView.OnItemSelecte
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);
+
+        //starter
+        starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
+
+        //main
+        main = new FoodList((LinearLayout) findViewById(R.id.foodlist02));
+
+        //dessert
+        dessert = new FoodList((LinearLayout) findViewById(R.id.foodlist03));
     }
 
 
