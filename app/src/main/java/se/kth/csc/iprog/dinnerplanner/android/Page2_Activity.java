@@ -64,6 +64,7 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
 
+        /*
         FoodView test1 = new FoodView(null, Page2_Activity.this);
         starter.add(test1);
 
@@ -78,7 +79,7 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         FoodView test5 = new FoodView(null, Page2_Activity.this);
         starter.add(test5);
-
+        */
 
         //main
         main = new FoodList((LinearLayout) findViewById(R.id.foodlist02));

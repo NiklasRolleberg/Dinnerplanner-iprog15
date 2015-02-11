@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Set;
+
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.Dish;
 
 
 public class Page3_Activity extends Activity {
@@ -20,6 +23,20 @@ public class Page3_Activity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         model = ((DinnerPlannerApplication) this.getApplication()).getModel();
+
+        //model test
+        System.out.println("Test av model");
+
+        Set<Dish> dishes = model.getDishes();
+
+        System.out.println("Guests: " + model.getNumberOfGuests());
+        System.out.println("Dishes: "+ dishes.size());
+
+        for(Dish itterator : dishes)
+        {
+            System.out.println(itterator.getName());
+            System.out.println(itterator.getDescription());
+        }
     }
 
 

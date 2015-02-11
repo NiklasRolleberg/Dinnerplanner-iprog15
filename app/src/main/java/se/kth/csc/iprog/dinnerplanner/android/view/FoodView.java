@@ -1,17 +1,16 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.Image;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import se.kth.csc.iprog.dinnerplanner.android.Page2_Activity;
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
 
@@ -23,6 +22,7 @@ public class FoodView implements View.OnClickListener{
     Dish food;
     View view;
     Context context;
+    ImageView  image;
 
     boolean red = false;
 
@@ -31,26 +31,29 @@ public class FoodView implements View.OnClickListener{
         this.context = context;
 
         //enkelt exempel
-        LinearLayout container = new LinearLayout(context);
-        container.setOrientation(LinearLayout.VERTICAL);
+        if(d == null) {
+            LinearLayout container = new LinearLayout(context);
+            container.setOrientation(LinearLayout.VERTICAL);
 
-        ImageView IV = new ImageView(context);
-        IV.setImageResource(R.drawable.sourdough);
+            ImageView IV = new ImageView(context);
 
-        TextView text = new TextView(context);
-        text.setTextColor(Color.BLACK);
-        text.setText("glass");
+            IV.setImageResource(R.drawable.sourdough);
 
-        container.addView(IV);
-        container.addView(text);
-        container.setPadding(5,5,5,5);
+            TextView text = new TextView(context);
+            text.setTextColor(Color.BLACK);
+            text.setText("glass");
 
-        view = container;
-        view.setOnClickListener(this);
+            container.addView(IV);
+            container.addView(text);
+            container.setPadding(5, 5, 5, 5);
+
+            view = container;
+            view.setOnClickListener(this);
+        }
         //fixa massa med maten
         System.out.println("FoodView Object created");
     }
-    
+
 
     @Override
     public void onClick(View v) {

@@ -1,6 +1,4 @@
 package se.kth.csc.iprog.dinnerplanner.android.view;
-
-import android.graphics.Color;
 import android.widget.LinearLayout;
 
 /**
