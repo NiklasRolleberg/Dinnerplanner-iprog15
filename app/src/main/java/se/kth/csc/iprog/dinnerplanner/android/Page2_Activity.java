@@ -19,9 +19,10 @@ import android.widget.TextView;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.FoodList;
 import se.kth.csc.iprog.dinnerplanner.android.view.FoodView;
+import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 
 
-public class Page2Activity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class Page2_Activity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     //for the dropdown
     private Spinner dropdown;
@@ -34,6 +35,9 @@ public class Page2Activity extends Activity implements AdapterView.OnItemSelecte
     private FoodList starter;
     private FoodList main;
     private FoodList dessert;
+
+    //Model
+    DinnerModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +55,14 @@ public class Page2Activity extends Activity implements AdapterView.OnItemSelecte
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);
 
-        //starter
-        starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
+        //Model
+        model = ((DinnerPlannerApplication) this.getApplication()).getModel();
+
 
         //TODO skapa en View som visar bilden och texten för mat (för all mat)
+
+        //starter
+        starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
 
         //enkelt exempel
         LinearLayout container = new LinearLayout(getApplicationContext());
