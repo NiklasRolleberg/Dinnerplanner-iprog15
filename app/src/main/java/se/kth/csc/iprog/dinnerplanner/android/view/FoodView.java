@@ -3,7 +3,10 @@ package se.kth.csc.iprog.dinnerplanner.android.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Picture;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.view.Gravity;
 import android.view.View;
@@ -30,28 +33,31 @@ public class FoodView implements View.OnClickListener{
         this.food = d;
         this.context = context;
 
+        LinearLayout container = new LinearLayout(context);
+        container.setOrientation(LinearLayout.VERTICAL);
+
+        ImageView IV = new ImageView(context);
+
+        //System.out.println(d.getImage());
+
+        TextView text = new TextView(context);
+        //text.setText(d.getName());
+
+
+
         //enkelt exempel
         if(d == null) {
-            LinearLayout container = new LinearLayout(context);
-            container.setOrientation(LinearLayout.VERTICAL);
-
-            ImageView IV = new ImageView(context);
-
             IV.setImageResource(R.drawable.sourdough);
-
-            TextView text = new TextView(context);
             text.setTextColor(Color.BLACK);
             text.setText("glass");
-
-            container.addView(IV);
-            container.addView(text);
-            container.setPadding(5, 5, 5, 5);
-
-            view = container;
-            view.setOnClickListener(this);
         }
-        //fixa massa med maten
-        System.out.println("FoodView Object created");
+
+        container.addView(IV);
+        container.addView(text);
+        container.setPadding(5, 5, 5, 5);
+
+        view = container;
+        view.setOnClickListener(this);
     }
 
 

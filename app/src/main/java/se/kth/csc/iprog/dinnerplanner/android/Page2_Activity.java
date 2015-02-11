@@ -17,9 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Set;
+
 import se.kth.csc.iprog.dinnerplanner.android.view.FoodList;
 import se.kth.csc.iprog.dinnerplanner.android.view.FoodView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.Dish;
 
 
 public class Page2_Activity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
@@ -63,6 +66,18 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
+
+        Set<Dish> dishes = model.getDishes();
+
+        System.out.println("Guests: " + model.getNumberOfGuests());
+        System.out.println("Dishes: " + dishes.size());
+
+        for(Dish itterator : dishes)
+        {
+            FoodView temp = new FoodView(itterator,Page2_Activity.this);
+            starter.add(temp);
+            break;
+        }
 
         /*
         FoodView test1 = new FoodView(null, Page2_Activity.this);
