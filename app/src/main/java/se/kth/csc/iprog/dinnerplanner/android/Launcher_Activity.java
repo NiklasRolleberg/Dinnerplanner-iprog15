@@ -1,9 +1,7 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,7 +52,7 @@ public class Launcher_Activity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, Page2Activity.class);
+        Intent intent = new Intent(this, Page2_Activity.class);
         startActivity(intent);
     }
 }
