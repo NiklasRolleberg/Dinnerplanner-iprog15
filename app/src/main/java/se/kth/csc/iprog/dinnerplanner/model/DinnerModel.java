@@ -3,10 +3,13 @@ package se.kth.csc.iprog.dinnerplanner.model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DinnerModel {
-	
+public class DinnerModel implements IDinnerModel{
+	private int nGuests = 1;
+
 
 	Set<Dish> dishes = new HashSet<Dish>();
+    Set<Dish> menu = new HashSet<Dish>();
+    Set<Ingredient> allIngredients = new HashSet<Ingredient>();
 	
 	/**
 	 * TODO: For Lab2 you need to implement the IDinnerModel interface.
@@ -94,7 +97,74 @@ public class DinnerModel {
 		}
 		return result;
 	}
-	
-	
 
+
+    @Override
+    public int getNumberOfGuests() {
+        return nGuests;
+    }
+
+    @Override
+    public void setNumberOfGuests(int numberOfGuests) {
+        nGuests = numberOfGuests;
+    }
+
+    @Override
+    public Dish getSelectedDish(int type) {
+        Dish result = null;
+        for (Dish d : menu){
+            if (d.type == type){
+                result = d;
+            }
+        }
+        return result; //todo try-catch etc
+    }
+
+    @Override
+    public Set<Dish> getFullMenu() {
+        return menu;
+    }
+
+    @Override
+    public Set<Ingredient> getAllIngredients() {
+        for (Dish d : menu) {
+            for (Ingredient i : d.ingredients) {
+                allIngredients.add(i);
+            }
+        }
+        return allIngredients;
+    }
+
+    @Override
+    public float getTotalMenuPrice() {
+        float totPrice = 0;
+        if (allIngredients == null){
+            //Set<Ingredient> ingList = new HashSet<Ingredient>();
+            allIngredients = getAllIngredients();
+        }
+
+        for (Ingredient i : allIngredients){
+           totPrice += i.price;
+        }
+        return totPrice;
+    }
+
+    @Override
+    public void addDishToMenu(Dish dish) {
+        menu.add(dish); //enough?!?!
+
+    }
+
+    @Override
+    public void removeDishFromMenu(Dish dish) {
+        menu.remove(dish); //enough?!?!?
+    }
+    @Override
+    public void removeTypeFromMenu(int type) {
+        for (Dish d : menu){
+            if (d.type == type) {
+                menu.remove(d); //enough?!?!?!?
+            }
+        }
+    }
 }

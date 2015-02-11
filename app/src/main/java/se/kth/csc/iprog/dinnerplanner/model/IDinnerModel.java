@@ -38,4 +38,9 @@ public interface IDinnerModel {
      */
     public void removeDishFromMenu(Dish dish);
 
+    /**
+     * Remove type of dish from menu
+     */
+    public void removeTypeFromMenu(int type);
+
 }
