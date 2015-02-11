@@ -64,29 +64,57 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
 
-        //enkelt exempel
-        LinearLayout container = new LinearLayout(getApplicationContext());
-        container.setOrientation(LinearLayout.VERTICAL);
+        FoodView test1 = new FoodView(null, Page2_Activity.this);
+        starter.add(test1);
 
-        ImageView IV = new ImageView(getApplicationContext());
-        IV.setImageResource(R.drawable.sourdough);
+        FoodView test2 = new FoodView(null, Page2_Activity.this);
+        starter.add(test2);
 
-        TextView text = new TextView(getApplicationContext());
-        text.setTextColor(Color.BLACK);
-        text.setText("glass");
+        FoodView test3 = new FoodView(null, Page2_Activity.this);
+        starter.add(test3);
 
-        container.addView(IV);
-        container.addView(text);
+        FoodView test4 = new FoodView(null, Page2_Activity.this);
+        starter.add(test4);
 
-        FoodView test = new FoodView(container);
-        starter.add(test);
+        FoodView test5 = new FoodView(null, Page2_Activity.this);
+        starter.add(test5);
 
 
         //main
         main = new FoodList((LinearLayout) findViewById(R.id.foodlist02));
 
+        FoodView test6 = new FoodView(null, Page2_Activity.this);
+        main.add(test6);
+
+        FoodView test7 = new FoodView(null, Page2_Activity.this);
+        main.add(test7);
+
+        FoodView test8 = new FoodView(null, Page2_Activity.this);
+        main.add(test8);
+
+        FoodView test9 = new FoodView(null, Page2_Activity.this);
+        main.add(test9);
+
+        FoodView test10 = new FoodView(null, Page2_Activity.this);
+        main.add(test10);
+
         //dessert
         dessert = new FoodList((LinearLayout) findViewById(R.id.foodlist03));
+
+        FoodView test11 = new FoodView(null, Page2_Activity.this);
+        dessert.add(test11);
+
+        FoodView test12 = new FoodView(null, Page2_Activity.this);
+        dessert.add(test12);
+
+        FoodView test13 = new FoodView(null, Page2_Activity.this);
+        dessert.add(test13);
+
+        FoodView test14 = new FoodView(null, Page2_Activity.this);
+        dessert.add(test14);
+
+        FoodView test15 = new FoodView(null, Page2_Activity.this);
+        dessert.add(test15);
     }
 
 

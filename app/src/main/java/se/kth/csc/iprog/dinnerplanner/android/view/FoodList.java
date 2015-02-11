@@ -17,7 +17,7 @@ public class FoodList {
     }
 
     public void add(FoodView FV) {
-        view.addView(FV.food);
+        view.addView(FV.view);
         view.invalidate();
     }
 }
