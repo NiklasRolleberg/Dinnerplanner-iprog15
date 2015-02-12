@@ -69,14 +69,9 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         Set<Dish> dishes = model.getDishes();
 
-        System.out.println("Guests: " + model.getNumberOfGuests());
-        System.out.println("Dishes: " + dishes.size());
-
-        for(Dish itterator : dishes)
-        {
-            FoodView temp = new FoodView(itterator,Page2_Activity.this);
+        for(Dish d : dishes) {
+            FoodView temp = new FoodView(model,d,Page2_Activity.this);
             starter.add(temp);
-            break;
         }
 
         /*
@@ -99,37 +94,37 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         //main
         main = new FoodList((LinearLayout) findViewById(R.id.foodlist02));
 
-        FoodView test6 = new FoodView(null, Page2_Activity.this);
+        FoodView test6 = new FoodView(model, null, Page2_Activity.this);
         main.add(test6);
 
-        FoodView test7 = new FoodView(null, Page2_Activity.this);
+        FoodView test7 = new FoodView(model, null, Page2_Activity.this);
         main.add(test7);
 
-        FoodView test8 = new FoodView(null, Page2_Activity.this);
+        FoodView test8 = new FoodView(model, null, Page2_Activity.this);
         main.add(test8);
 
-        FoodView test9 = new FoodView(null, Page2_Activity.this);
+        FoodView test9 = new FoodView(model, null, Page2_Activity.this);
         main.add(test9);
 
-        FoodView test10 = new FoodView(null, Page2_Activity.this);
+        FoodView test10 = new FoodView(model, null, Page2_Activity.this);
         main.add(test10);
 
         //dessert
         dessert = new FoodList((LinearLayout) findViewById(R.id.foodlist03));
 
-        FoodView test11 = new FoodView(null, Page2_Activity.this);
+        FoodView test11 = new FoodView(model, null, Page2_Activity.this);
         dessert.add(test11);
 
-        FoodView test12 = new FoodView(null, Page2_Activity.this);
+        FoodView test12 = new FoodView(model, null, Page2_Activity.this);
         dessert.add(test12);
 
-        FoodView test13 = new FoodView(null, Page2_Activity.this);
+        FoodView test13 = new FoodView(model, null, Page2_Activity.this);
         dessert.add(test13);
 
-        FoodView test14 = new FoodView(null, Page2_Activity.this);
+        FoodView test14 = new FoodView(model, null, Page2_Activity.this);
         dessert.add(test14);
 
-        FoodView test15 = new FoodView(null, Page2_Activity.this);
+        FoodView test15 = new FoodView(model, null, Page2_Activity.this);
         dessert.add(test15);
     }
 
@@ -155,6 +150,7 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         System.out.println("Nu valdes: "+ items[position] + " participants" );
+        model.setNumberOfGuests(Integer.parseInt(items[position]));
 
     }
 

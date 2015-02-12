@@ -14,8 +14,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Set;
+
 import se.kth.csc.iprog.dinnerplanner.android.R;
+import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
+import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 
 /**
  * Created by Niklas on 2015-02-10.
@@ -23,13 +27,15 @@ import se.kth.csc.iprog.dinnerplanner.model.Dish;
 public class FoodView implements View.OnClickListener{
 
     Dish food;
+    DinnerModel model;
     View view;
     Context context;
     ImageView  image;
 
     boolean red = false;
 
-    public FoodView(Dish d, Context context) {
+    public FoodView(DinnerModel model, Dish d, Context context) {
+        this.model = model;
         this.food = d;
         this.context = context;
 
@@ -38,21 +44,30 @@ public class FoodView implements View.OnClickListener{
 
         ImageView IV = new ImageView(context);
 
-        //System.out.println(d.getImage());
-
         TextView text = new TextView(context);
         //text.setText(d.getName());
 
+        if(food != null) {
+            String test  = food.getImage();
+
+
+            IV.setImageResource(R.drawable.toast);
+            text.setText(food.getName());
+            text.setTextColor(Color.BLACK);
+        }
 
 
         //enkelt exempel
-        if(d == null) {
+        else {
             IV.setImageResource(R.drawable.sourdough);
             text.setTextColor(Color.BLACK);
             text.setText("glass");
         }
 
         container.addView(IV);
+        IV.setMaxHeight(5);
+        IV.setMaxWidth(5);
+
         container.addView(text);
         container.setPadding(5, 5, 5, 5);
 
@@ -74,6 +89,20 @@ public class FoodView implements View.OnClickListener{
 
         TextView info = new TextView(context);
         info.setText("Cost: 500kr\n50kr/liter");
+        if(food != null) {
+
+            int price = 0;
+
+            for(Ingredient I : food.getIngredients())
+            {
+                if(I!= null)
+                {
+                    price += I.getPrice();
+                }
+            }
+            //TODO fixa kostnad
+            info.setText("Cost: " + price*model.getNumberOfGuests() + "\n" + price + "kr/person");
+        }
         layout.addView(info);
 
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
