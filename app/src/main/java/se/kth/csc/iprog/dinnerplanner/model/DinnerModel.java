@@ -61,6 +61,14 @@ public class DinnerModel implements IDinnerModel{
 		dish2.addIngredient(dish2ing10);
 		dish2.addIngredient(dish2ing11);
 		dishes.add(dish2);
+
+        Dish dish3 = new Dish("Sourdough",Dish.DESERT,"sourdough.jpg","improvise");
+        Ingredient dish3ing1 = new Ingredient("extra large ground beef",2,"kg",200);
+        Ingredient dish3ing2 = new Ingredient("sea water",5,"liters",1);
+
+        dish3.addIngredient(dish3ing1);
+        dish3.addIngredient(dish3ing2);
+        dishes.add(dish3);
 		
 	}
 	
@@ -151,20 +159,38 @@ public class DinnerModel implements IDinnerModel{
 
     @Override
     public void addDishToMenu(Dish dish) {
+
+        System.out.println("Adding " + dish.getName() + " to menu");
+
         menu.add(dish); //enough?!?!
 
+        System.out.println("Menu is: ");
+        for(Dish d : menu) {
+            System.out.println(d.getName());
+        }
     }
 
     @Override
     public void removeDishFromMenu(Dish dish) {
         menu.remove(dish); //enough?!?!?
     }
+
+    //TODO fixa så det funkar
     @Override
     public void removeTypeFromMenu(int type) {
+        System.out.println("Removing type " + type + " from menu");
         for (Dish d : menu){
-            if (d.type == type) {
-                menu.remove(d); //enough?!?!?!?
+            if(d != null) {
+                if (d.type == type) {
+                    menu.remove(d); //enough?!?!?!?
+                }
             }
         }
+
+        System.out.println("Menu is: ");
+        for(Dish d : menu) {
+            System.out.println(d.getName());
+        }
+
     }
 }

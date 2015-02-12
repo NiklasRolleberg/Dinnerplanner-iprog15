@@ -4,17 +4,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Picture;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Set;
+import java.io.File;
+import java.util.Observable;
 
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
@@ -24,7 +24,7 @@ import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 /**
  * Created by Niklas on 2015-02-10.
  */
-public class FoodView implements View.OnClickListener{
+public class FoodView extends Observable implements View.OnClickListener {
 
     Dish food;
     DinnerModel model;
@@ -45,13 +45,16 @@ public class FoodView implements View.OnClickListener{
         ImageView IV = new ImageView(context);
 
         TextView text = new TextView(context);
-        //text.setText(d.getName());
+
 
         if(food != null) {
-            String test  = food.getImage();
+            String imageName  = food.getImage();
+
+            System.out.println(imageName);
 
 
-            IV.setImageResource(R.drawable.toast);
+
+            IV.setImageResource(R.drawable.ic_launcher);
             text.setText(food.getName());
             text.setTextColor(Color.BLACK);
         }
@@ -73,6 +76,19 @@ public class FoodView implements View.OnClickListener{
 
         view = container;
         view.setOnClickListener(this);
+
+    }
+
+    public boolean isSelected() {
+        return red;
+    }
+
+    public void setSelected(boolean selected) {
+        red = selected;
+        if(red)
+            view.setBackgroundColor(Color.RED);
+        else
+            view.setBackgroundColor(Color.TRANSPARENT);
     }
 
 
@@ -83,14 +99,17 @@ public class FoodView implements View.OnClickListener{
         layout.setOrientation(LinearLayout.HORIZONTAL);
         layout.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
 
+        String title = "MAT";
+
         ImageView image = new ImageView(context);
-        image.setImageResource(R.drawable.sourdough);
+        image.setImageResource(R.drawable.ic_launcher);
         layout.addView(image);
 
         TextView info = new TextView(context);
         info.setText("Cost: 500kr\n50kr/liter");
         if(food != null) {
 
+            title = food.getName();
             int price = 0;
 
             for(Ingredient I : food.getIngredients())
@@ -100,13 +119,12 @@ public class FoodView implements View.OnClickListener{
                     price += I.getPrice();
                 }
             }
-            //TODO fixa kostnad
             info.setText("Cost: " + price*model.getNumberOfGuests() + "\n" + price + "kr/person");
         }
         layout.addView(info);
 
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("MAT");
+        alertDialog.setTitle(title);
         alertDialog.setView(layout);
 
         if(!red) {
@@ -115,6 +133,10 @@ public class FoodView implements View.OnClickListener{
                         public void onClick(DialogInterface dialog, int which) {
                             view.setBackgroundColor(Color.RED);
                             red = true;
+
+                            setChanged();
+                            notifyObservers();
+
                             dialog.dismiss();
                         }
                     });
@@ -126,6 +148,11 @@ public class FoodView implements View.OnClickListener{
                         public void onClick(DialogInterface dialog, int which) {
                             view.setBackgroundColor(Color.TRANSPARENT);
                             red = false;
+
+                            setChanged();
+                            notifyObservers();
+
+
                             dialog.dismiss();
                         }
                     });

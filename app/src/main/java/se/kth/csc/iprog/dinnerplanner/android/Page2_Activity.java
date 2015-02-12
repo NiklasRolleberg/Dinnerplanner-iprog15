@@ -1,10 +1,8 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.Image;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,20 +10,22 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 
 import se.kth.csc.iprog.dinnerplanner.android.view.FoodList;
 import se.kth.csc.iprog.dinnerplanner.android.view.FoodView;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
+import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 
 
-public class Page2_Activity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class Page2_Activity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener, Observer {
 
     //for the dropdown
     private Spinner dropdown;
@@ -33,6 +33,9 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
     //button
     private Button create;
+
+    //textView
+    private TextView totalCost;
 
     //food stuff
     private FoodList starter;
@@ -52,6 +55,8 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         create = (Button)findViewById(R.id.createButton);
         create.setOnClickListener(this);
 
+        totalCost = (TextView)findViewById(R.id.textView2);
+
         dropdown = (Spinner)findViewById(R.id.spinner1);
         items = new String[]{"1", "2", "3", "4", "5"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
@@ -61,71 +66,41 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         //Model
         model = ((DinnerPlannerApplication) this.getApplication()).getModel();
 
+        //TEST
+
+        
+
+        //!TEST
+
 
         //TODO skapa en View som visar bilden och texten för mat (för all mat)
 
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
-
-        Set<Dish> dishes = model.getDishes();
-
-        for(Dish d : dishes) {
+        Set<Dish> dishes01 = model.getDishes();
+        for(Dish d : dishes01) {
             FoodView temp = new FoodView(model,d,Page2_Activity.this);
             starter.add(temp);
         }
-
-        /*
-        FoodView test1 = new FoodView(null, Page2_Activity.this);
-        starter.add(test1);
-
-        FoodView test2 = new FoodView(null, Page2_Activity.this);
-        starter.add(test2);
-
-        FoodView test3 = new FoodView(null, Page2_Activity.this);
-        starter.add(test3);
-
-        FoodView test4 = new FoodView(null, Page2_Activity.this);
-        starter.add(test4);
-
-        FoodView test5 = new FoodView(null, Page2_Activity.this);
-        starter.add(test5);
-        */
+        starter.addObserver(this);
 
         //main
         main = new FoodList((LinearLayout) findViewById(R.id.foodlist02));
-
-        FoodView test6 = new FoodView(model, null, Page2_Activity.this);
-        main.add(test6);
-
-        FoodView test7 = new FoodView(model, null, Page2_Activity.this);
-        main.add(test7);
-
-        FoodView test8 = new FoodView(model, null, Page2_Activity.this);
-        main.add(test8);
-
-        FoodView test9 = new FoodView(model, null, Page2_Activity.this);
-        main.add(test9);
-
-        FoodView test10 = new FoodView(model, null, Page2_Activity.this);
-        main.add(test10);
+        Set<Dish>dishes02 = model.getDishes();
+        for(Dish d : dishes02) {
+            FoodView temp = new FoodView(model,d,Page2_Activity.this);
+            main.add(temp);
+        }
+        main.addObserver(this);
 
         //dessert
         dessert = new FoodList((LinearLayout) findViewById(R.id.foodlist03));
-
-        FoodView test11 = new FoodView(model, null, Page2_Activity.this);
-        dessert.add(test11);
-
-        FoodView test12 = new FoodView(model, null, Page2_Activity.this);
-        dessert.add(test12);
-
-        FoodView test13 = new FoodView(model, null, Page2_Activity.this);
-        dessert.add(test13);
-
-        FoodView test14 = new FoodView(model, null, Page2_Activity.this);
-        dessert.add(test14);
-
-        FoodView test15 = new FoodView(model, null, Page2_Activity.this);
-        dessert.add(test15);
+        Set<Dish> dishes03 = model.getDishes();
+        for(Dish d : dishes03) {
+            FoodView temp = new FoodView(model,d,Page2_Activity.this);
+            dessert.add(temp);
+        }
+        dessert.addObserver(this);
     }
 
 
@@ -152,6 +127,8 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         System.out.println("Nu valdes: "+ items[position] + " participants" );
         model.setNumberOfGuests(Integer.parseInt(items[position]));
 
+        update(null,null);
+
     }
 
     @Override
@@ -166,5 +143,63 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         System.out.println("KLICK!");
         Intent intent = new Intent(this, Page3_Activity.class);
         startActivity(intent);
+    }
+
+    /**OBSERVER
+     * @param observable
+     * @param data
+     */
+    @Override
+    public void update(Observable observable, Object data) {
+
+        //TODO fixa så man kan ta bort saker från menyn
+        if (observable instanceof FoodList) {
+            //System.out.println("its a FoodView");
+            FoodList temp = (FoodList) observable;
+
+            if(temp.equals(starter)) {
+                System.out.println("Starter");
+                //model.removeTypeFromMenu(1);
+                //model.addDishToMenu(starter.getSelected());
+            }
+            else if (temp.equals(main)) {
+                System.out.println("Main");
+                //model.removeTypeFromMenu(2);
+                //model.addDishToMenu(main.getSelected());
+            }
+            else if (temp.equals(dessert)) {
+                System.out.println("Dessert");
+                //model.removeTypeFromMenu(3);
+                //model.addDishToMenu(dessert.getSelected());
+            }
+        }
+
+        //TODO Byta ut detta till model.gettotlafmenupricetrorjagdetheter()
+        float price = 0;//model.getTotalMenuPrice();
+
+        if(starter.getSelected() != null) {
+            price += calculatePrice(starter.getSelected()) * model.getNumberOfGuests();
+        }
+
+        if(main.getSelected() != null) {
+            price += calculatePrice(main.getSelected()) * model.getNumberOfGuests();
+        }
+
+        if(dessert.getSelected() != null) {
+            price += calculatePrice(dessert.getSelected()) * model.getNumberOfGuests();
+        }
+
+
+        totalCost.setText("Total Cost: " + (float)((int) (price*100))/100 + "kr");
+    }
+
+    //calculate price for 1p
+    private int calculatePrice(Dish d) {
+        int price = 0;
+        for(Ingredient I : d.getIngredients()) {
+            if(I != null)
+                price += I.getPrice();
+        }
+        return price;
     }
 }
