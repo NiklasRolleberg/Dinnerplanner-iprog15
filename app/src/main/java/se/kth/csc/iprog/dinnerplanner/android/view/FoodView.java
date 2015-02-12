@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.Observable;
 
 import se.kth.csc.iprog.dinnerplanner.android.R;
@@ -30,7 +31,7 @@ public class FoodView extends Observable implements View.OnClickListener {
     DinnerModel model;
     View view;
     Context context;
-    ImageView  image;
+    Drawable  image;
 
     boolean red = false;
 
@@ -48,13 +49,28 @@ public class FoodView extends Observable implements View.OnClickListener {
 
 
         if(food != null) {
-            String imageName  = food.getImage();
 
-            System.out.println(imageName);
+            // FULHACK!
+            //TODO fixa fulhacket
+            String imageName = food.getImage();
+            //System.out.println(imageName);
+
+            if(imageName == "bakedbrie.jpg")
+                image = context.getResources().getDrawable(R.drawable.bakedbrie);
+            else if(imageName == "icecream.jpg")
+                image = context.getResources().getDrawable(R.drawable.icecream);
+            else if(imageName == "meatballs.jpg")
+                image = context.getResources().getDrawable(R.drawable.meatballs);
+            else if(imageName == "sourdough.jpg")
+                image = context.getResources().getDrawable(R.drawable.sourdough);
+            else if(imageName == "toast.jpg")
+                image = context.getResources().getDrawable(R.drawable.toast);
+            else
+                image = context.getResources().getDrawable(R.drawable.ic_launcher);
 
 
 
-            IV.setImageResource(R.drawable.ic_launcher);
+            IV.setImageDrawable(image);
             text.setText(food.getName());
             text.setTextColor(Color.BLACK);
         }
@@ -101,9 +117,9 @@ public class FoodView extends Observable implements View.OnClickListener {
 
         String title = "MAT";
 
-        ImageView image = new ImageView(context);
-        image.setImageResource(R.drawable.ic_launcher);
-        layout.addView(image);
+        ImageView imageV = new ImageView(context);
+        imageV.setImageDrawable(image);
+        layout.addView(imageV);
 
         TextView info = new TextView(context);
         info.setText("Cost: 500kr\n50kr/liter");

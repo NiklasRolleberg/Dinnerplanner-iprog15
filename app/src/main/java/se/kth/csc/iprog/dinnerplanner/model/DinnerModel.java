@@ -1,11 +1,15 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class DinnerModel implements IDinnerModel{
 	private int nGuests = 1;
-
 
 	Set<Dish> dishes = new HashSet<Dish>();
     Set<Dish> menu = new HashSet<Dish>();

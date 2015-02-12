@@ -66,15 +66,6 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         //Model
         model = ((DinnerPlannerApplication) this.getApplication()).getModel();
 
-        //TEST
-
-        
-
-        //!TEST
-
-
-        //TODO skapa en View som visar bilden och texten för mat (för all mat)
-
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
         Set<Dish> dishes01 = model.getDishes();

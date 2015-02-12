@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
+
 
 public class Launcher_Activity extends Activity implements View.OnClickListener{
 
