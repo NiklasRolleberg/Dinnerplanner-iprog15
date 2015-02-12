@@ -73,7 +73,15 @@ public class DinnerModel implements IDinnerModel{
         dish3.addIngredient(dish3ing1);
         dish3.addIngredient(dish3ing2);
         dishes.add(dish3);
-		
+
+        Dish dish4 = new Dish("icecream",Dish.DESERT,"icecream.jpg","boil for 10 mins");
+        Ingredient dish4ing1 = new Ingredient("ice",3,"dl",3);
+        Ingredient dish4ing2 = new Ingredient("cream",1,"dl",10);
+
+        dish4.addIngredient(dish4ing1);
+        dish4.addIngredient(dish4ing2);
+        dishes.add(dish4);
+
 	}
 	
 	/**

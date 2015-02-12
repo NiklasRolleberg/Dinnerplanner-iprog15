@@ -61,12 +61,19 @@
                 android:text="Choose menu"
                 android:id="@+id/textView3" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="___________________________________________"
-                android:id="@+id/textView4" />
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="___________________________________________"
+                    android:id="@+id/textView4" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

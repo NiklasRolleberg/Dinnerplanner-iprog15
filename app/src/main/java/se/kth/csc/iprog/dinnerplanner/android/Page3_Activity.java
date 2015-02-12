@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.Set;
 
@@ -15,6 +17,9 @@ public class Page3_Activity extends Activity {
 
     //Model
     DinnerModel model;
+    TextView info;
+    TextView totalcost;
+    LinearLayout list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +29,9 @@ public class Page3_Activity extends Activity {
 
         model = ((DinnerPlannerApplication) this.getApplication()).getModel();
 
-        //model test
-        System.out.println("Test av model");
-
-        Set<Dish> dishes = model.getDishes();
-
-        System.out.println("Guests: " + model.getNumberOfGuests());
-        System.out.println("Dishes: "+ dishes.size());
-
-        for(Dish itterator : dishes)
-        {
-            System.out.println(itterator.getName());
-            System.out.println(itterator.getDescription());
-        }
+        info = (TextView) findViewById(R.id.P3_infotext);
+        totalcost = (TextView) findViewById(R.id.P3_totalcost);
+        list = (LinearLayout) findViewById(R.id.P3_list);
     }
 
 

@@ -65,6 +65,8 @@ public class FoodView extends Observable implements View.OnClickListener {
                 image = context.getResources().getDrawable(R.drawable.sourdough);
             else if(imageName == "toast.jpg")
                 image = context.getResources().getDrawable(R.drawable.toast);
+            else if(imageName == "icecream.jpg")
+                image = context.getResources().getDrawable(R.drawable.icecream);
             else
                 image = context.getResources().getDrawable(R.drawable.ic_launcher);
 
