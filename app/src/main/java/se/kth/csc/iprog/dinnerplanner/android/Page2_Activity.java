@@ -68,7 +68,8 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
-        Set<Dish> dishes01 = model.getDishes();
+        //Set<Dish> dishes01 = model.getDishes();
+        Set<Dish> dishes01 = model.getDishesOfType(1);
         for(Dish d : dishes01) {
             FoodView temp = new FoodView(model,d,Page2_Activity.this);
             starter.add(temp);
@@ -77,7 +78,8 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         //main
         main = new FoodList((LinearLayout) findViewById(R.id.foodlist02));
-        Set<Dish>dishes02 = model.getDishes();
+        //Set<Dish>dishes02 = model.getDishes();
+        Set<Dish> dishes02 = model.getDishesOfType(2);
         for(Dish d : dishes02) {
             FoodView temp = new FoodView(model,d,Page2_Activity.this);
             main.add(temp);
@@ -86,7 +88,8 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         //dessert
         dessert = new FoodList((LinearLayout) findViewById(R.id.foodlist03));
-        Set<Dish> dishes03 = model.getDishes();
+        //Set<Dish> dishes03 = model.getDishes();
+        Set<Dish> dishes03 = model.getDishesOfType(3);
         for(Dish d : dishes03) {
             FoodView temp = new FoodView(model,d,Page2_Activity.this);
             dessert.add(temp);
@@ -151,17 +154,17 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
             if(temp.equals(starter)) {
                 System.out.println("Starter");
                 //model.removeTypeFromMenu(1);
-                //model.addDishToMenu(starter.getSelected());
+                model.addDishToMenu(starter.getSelected());
             }
             else if (temp.equals(main)) {
                 System.out.println("Main");
                 //model.removeTypeFromMenu(2);
-                //model.addDishToMenu(main.getSelected());
+                model.addDishToMenu(main.getSelected());
             }
             else if (temp.equals(dessert)) {
                 System.out.println("Dessert");
                 //model.removeTypeFromMenu(3);
-                //model.addDishToMenu(dessert.getSelected());
+                model.addDishToMenu(dessert.getSelected());
             }
         }
 

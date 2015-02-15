@@ -73,6 +73,8 @@ public class FoodView extends Observable implements View.OnClickListener {
 
 
             IV.setImageDrawable(image);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, 250);
+            IV.setLayoutParams(layoutParams);
             text.setText(food.getName());
             text.setTextColor(Color.BLACK);
         }
