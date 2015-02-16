@@ -8,9 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
-
-
 public class Launcher_Activity extends Activity implements View.OnClickListener{
 
     Button start;
@@ -25,8 +22,6 @@ public class Launcher_Activity extends Activity implements View.OnClickListener{
         setContentView(R.layout.page01_layout);
         start = (Button)findViewById(R.id.p1_button);
         start.setOnClickListener(this);
-        // Creating the view class instance
-        //ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id));
     }
 
 

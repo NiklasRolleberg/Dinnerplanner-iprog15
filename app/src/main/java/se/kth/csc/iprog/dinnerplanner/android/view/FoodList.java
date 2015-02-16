@@ -43,7 +43,7 @@ public class FoodList extends Observable implements Observer{
     public void update(Observable observable, Object data) {
 
         if (observable instanceof FoodView) {
-            //System.out.println("its a FoodView");
+
             FoodView temp = (FoodView) observable;
 
             if (temp.isSelected()) {
@@ -57,6 +57,7 @@ public class FoodList extends Observable implements Observer{
                 selected = temp;
             }
             else {
+                System.out.println("Selected = null");
                 selected = null;
             }
             setChanged();

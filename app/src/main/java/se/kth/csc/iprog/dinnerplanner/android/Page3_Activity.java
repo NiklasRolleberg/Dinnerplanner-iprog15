@@ -94,6 +94,11 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
         list.addView(dessertCV);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        totalcost.setText("Total cost:" + model.getTotalMenuPrice() + "kr");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -130,7 +135,7 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
             String s = "";
             for(Ingredient i : model.getAllIngredients()) {
                 if(i != null)
-                    s += i.getName() + "  " + i.getQuantity() + " " + i.getUnit() + "\n";
+                    s += i.getName() + "  " + i.getQuantity()*model.getNumberOfGuests() + " " + i.getUnit() + "\n";
             }
 
             info.setText(s);
@@ -192,7 +197,7 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
 
             //ingredients
             if(type == 0) {
-                IV.setImageResource(R.drawable.ic_launcher);
+                IV.setImageResource(R.drawable.ingredientsicon);
                 TV.setText("Ingredients");
             }
             //food of some sort

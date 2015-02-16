@@ -1,11 +1,7 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class DinnerModel implements IDinnerModel{
@@ -157,16 +153,16 @@ public class DinnerModel implements IDinnerModel{
 
     @Override
     public float getTotalMenuPrice() {
+        System.out.println("GETTOTALPRICE!");
         float totPrice = 0;
-        if (allIngredients == null){
-            //Set<Ingredient> ingList = new HashSet<Ingredient>();
-            allIngredients = getAllIngredients();
+        if (allIngredients == null || allIngredients.isEmpty()){
+            getAllIngredients();
         }
 
         for (Ingredient i : allIngredients){
            totPrice += i.price;
         }
-        return totPrice;
+        return totPrice*nGuests;
     }
 
     @Override
@@ -175,6 +171,7 @@ public class DinnerModel implements IDinnerModel{
         System.out.println("Adding " + dish.getName() + " to menu");
 
         menu.add(dish); //enough?!?!
+
 
         System.out.println("Menu is: ");
         for(Dish d : menu) {
@@ -190,19 +187,24 @@ public class DinnerModel implements IDinnerModel{
     //TODO fixa så det funkar
     @Override
     public void removeTypeFromMenu(int type) {
-        System.out.println("Removing type " + type + " from menu");
+        //System.out.println("Removing type " + type + " from menu");
+        ArrayList<Dish> remove = new ArrayList<Dish>();
         for (Dish d : menu){
             if(d != null) {
                 if (d.type == type) {
-                    menu.remove(d); //enough?!?!?!?
+                    remove.add(d);
+                    //menu.remove(d); //enough?!?!?!?
+                    //nej det är dumt att plocka bort saker ur samma set som om ittererar över
                 }
             }
         }
+        menu.removeAll(remove);
+        allIngredients.clear();
+
 
         System.out.println("Menu is: ");
         for(Dish d : menu) {
             System.out.println(d.getName());
         }
-
     }
 }

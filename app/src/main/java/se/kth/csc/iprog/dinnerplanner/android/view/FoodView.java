@@ -3,8 +3,6 @@ package se.kth.csc.iprog.dinnerplanner.android.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
@@ -13,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.io.File;
-import java.util.Objects;
 import java.util.Observable;
 
 import se.kth.csc.iprog.dinnerplanner.android.R;
@@ -32,7 +28,6 @@ public class FoodView extends Observable implements View.OnClickListener {
     View view;
     Context context;
     Drawable  image;
-
     boolean red = false;
 
     public FoodView(DinnerModel model, Dish d, Context context) {
@@ -44,16 +39,11 @@ public class FoodView extends Observable implements View.OnClickListener {
         container.setOrientation(LinearLayout.VERTICAL);
 
         ImageView IV = new ImageView(context);
-
         TextView text = new TextView(context);
 
-
         if(food != null) {
-
-            // FULHACK!
             //TODO fixa fulhacket
             String imageName = food.getImage();
-            //System.out.println(imageName);
 
             if(imageName == "bakedbrie.jpg")
                 image = context.getResources().getDrawable(R.drawable.bakedbrie);
@@ -88,9 +78,6 @@ public class FoodView extends Observable implements View.OnClickListener {
         }
 
         container.addView(IV);
-        IV.setMaxHeight(5);
-        IV.setMaxWidth(5);
-
         container.addView(text);
         container.setPadding(5, 5, 5, 5);
 
@@ -156,7 +143,6 @@ public class FoodView extends Observable implements View.OnClickListener {
 
                             setChanged();
                             notifyObservers();
-
                             dialog.dismiss();
                         }
                     });
@@ -171,8 +157,6 @@ public class FoodView extends Observable implements View.OnClickListener {
 
                             setChanged();
                             notifyObservers();
-
-
                             dialog.dismiss();
                         }
                     });

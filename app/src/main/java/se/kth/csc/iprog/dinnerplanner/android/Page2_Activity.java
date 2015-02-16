@@ -2,7 +2,6 @@ package se.kth.csc.iprog.dinnerplanner.android;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,7 +57,7 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         totalCost = (TextView)findViewById(R.id.textView2);
 
         dropdown = (Spinner)findViewById(R.id.spinner1);
-        items = new String[]{"1", "2", "3", "4", "5"};
+        items = new String[]{"1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);
@@ -118,7 +117,7 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
     /**Listener methods for spinner*/
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("Nu valdes: "+ items[position] + " participants" );
+        //System.out.println("Nu valdes: "+ items[position] + " participants" );
         model.setNumberOfGuests(Integer.parseInt(items[position]));
 
         update(null,null);
@@ -134,7 +133,6 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
     /** Onclicklistener for the button*/
     @Override
     public void onClick(View v) {
-        System.out.println("KLICK!");
         Intent intent = new Intent(this, Page3_Activity.class);
         startActivity(intent);
     }
@@ -153,18 +151,24 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
             if(temp.equals(starter)) {
                 System.out.println("Starter");
-                //model.removeTypeFromMenu(1);
-                model.addDishToMenu(starter.getSelected());
+                model.removeTypeFromMenu(1);
+                Dish dish = starter.getSelected();
+                if (dish != null)
+                    model.addDishToMenu(dish);
             }
             else if (temp.equals(main)) {
                 System.out.println("Main");
-                //model.removeTypeFromMenu(2);
-                model.addDishToMenu(main.getSelected());
+                model.removeTypeFromMenu(2);
+                Dish dish = main.getSelected();
+                if (dish != null)
+                    model.addDishToMenu(dish);
             }
             else if (temp.equals(dessert)) {
                 System.out.println("Dessert");
-                //model.removeTypeFromMenu(3);
-                model.addDishToMenu(dessert.getSelected());
+                model.removeTypeFromMenu(3);
+                Dish dish = dessert.getSelected();
+                if (dish != null)
+                    model.addDishToMenu(dish);
             }
         }
 
