@@ -40,6 +40,7 @@ public class FoodView extends Observable implements View.OnClickListener {
 
         ImageView IV = new ImageView(context);
         TextView text = new TextView(context);
+        text.setTextSize(12);
 
         if(food != null) {
             //TODO fixa fulhacket
@@ -63,7 +64,7 @@ public class FoodView extends Observable implements View.OnClickListener {
 
 
             IV.setImageDrawable(image);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, 250);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(220, 220);
             IV.setLayoutParams(layoutParams);
             text.setText(food.getName());
             text.setTextColor(Color.BLACK);
