@@ -78,7 +78,99 @@ public class DinnerModel implements IDinnerModel{
         dish4.addIngredient(dish4ing2);
         dishes.add(dish4);
 
-	}
+        Dish dish5 = new Dish("Berry cake",Dish.DESERT,"berrycake.jpg","mix stuff");
+        Ingredient dish5ing1 = new Ingredient("Berry",3,"dl",3);
+        Ingredient dish5ing2 = new Ingredient("cake",1,"dl",10);
+
+        dish5.addIngredient(dish5ing1);
+        dish5.addIngredient(dish5ing2);
+        dishes.add(dish5);
+
+        Dish dish6 = new Dish("chicken",Dish.MAIN,"chicken.jpg","put the chicken i a frying pan and wait");
+        Ingredient dish6ing1 = new Ingredient("chickens",2,"st",55);
+        Ingredient dish6ing2 = new Ingredient("rice",1,"kg",10);
+
+        dish6.addIngredient(dish6ing1);
+        dish6.addIngredient(dish6ing2);
+        dishes.add(dish6);
+
+        Dish dish7 = new Dish("chocolate cake",Dish.DESERT,"chocolatecake.jpg","eat");
+        Ingredient dish7ing1 = new Ingredient("chocolate",2,"st",55);
+        Ingredient dish7ing2 = new Ingredient("cake",1,"kg",10);
+
+        dish7.addIngredient(dish7ing1);
+        dish7.addIngredient(dish7ing2);
+        dishes.add(dish7);
+
+        Dish dish8 = new Dish("crostini",Dish.STARTER,"crostini.jpg","put the chicken i a frying pan and wait");
+        Ingredient dish8ing1 = new Ingredient("chocolate",2,"st",55);
+        Ingredient dish8ing2 = new Ingredient("cake",1,"kg",10);
+
+        dish8.addIngredient(dish8ing1);
+        dish8.addIngredient(dish8ing2);
+        dishes.add(dish8);
+
+        Dish dish9 = new Dish("meat",Dish.MAIN,"meat.jpg","just eat it raw");
+        Ingredient dish9ing1 = new Ingredient("meat",2,"Kg",100);
+        Ingredient dish9ing2 = new Ingredient("more meat",1,"kg",50);
+
+        dish9.addIngredient(dish9ing1);
+        dish9.addIngredient(dish9ing2);
+        dishes.add(dish9);
+
+        Dish dish10 = new Dish("mushroom tart",Dish.STARTER,"mushroomtart.jpg","run around in the room for 10 min");
+        Ingredient dish10ing1 = new Ingredient("tart",2,"Kg",100);
+        Ingredient dish10ing2 = new Ingredient("no meat",1,"kg",20);
+
+        dish10.addIngredient(dish10ing1);
+        dish10.addIngredient(dish10ing2);
+        dishes.add(dish10);
+
+        Dish dish11 = new Dish("shrimp plate",Dish.MAIN,"shrimpplate.jpg","walk around in the room for 10 min");
+        Ingredient dish11ing1 = new Ingredient("shrimp",2,"Kg",100);
+        Ingredient dish11ing2 = new Ingredient("plate",1,"kg",20);
+
+        dish11.addIngredient(dish11ing1);
+        dish11.addIngredient(dish11ing2);
+        dishes.add(dish11);
+
+
+        Dish dish12 = new Dish("shrimpsalad",Dish.STARTER,"shrimpsalad.jpg","walk around in the room for 10 min");
+        Ingredient dish12ing1 = new Ingredient("shrimp",2,"Kg",100);
+        Ingredient dish12ing2 = new Ingredient("green stuff",14,"kg",20);
+
+        dish12.addIngredient(dish12ing1);
+        dish12.addIngredient(dish12ing2);
+        dishes.add(dish12);
+
+
+        Dish dish13 = new Dish("tuna",Dish.MAIN,"tuna.jpg","open the can and eat");
+        Ingredient dish13ing1 = new Ingredient("tuna",2,"Kg",100);
+        Ingredient dish13ing2 = new Ingredient("nothing",14,"kg",20);
+
+        dish13.addIngredient(dish13ing1);
+        dish13.addIngredient(dish13ing2);
+        dishes.add(dish13);
+
+
+        Dish dish14 = new Dish("starter",Dish.STARTER,"start.jpg","eat");
+        Ingredient dish14ing1 = new Ingredient("metal",2,"Kg",70);
+        Ingredient dish14ing2 = new Ingredient("other stuff",14,"kg",20);
+
+        dish14.addIngredient(dish14ing1);
+        dish14.addIngredient(dish14ing2);
+        dishes.add(dish14);
+
+
+        Dish dish15 = new Dish("KAKA",Dish.DESERT,"kakor.jpg","it's good for you");
+        Ingredient dish15ing1 = new Ingredient("kaka",2,"Kg",100);
+        Ingredient dish15ing2 = new Ingredient("mjöl",14,"kg",20);
+
+        dish15.addIngredient(dish15ing1);
+        dish15.addIngredient(dish15ing2);
+        dishes.add(dish15);
+
+    }
 	
 	/**
 	 * Returns the set of dishes of specific type. (1 = starter, 2 = main, 3 = desert).

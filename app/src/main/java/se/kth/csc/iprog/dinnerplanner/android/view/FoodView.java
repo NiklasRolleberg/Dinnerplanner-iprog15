@@ -56,8 +56,28 @@ public class FoodView extends Observable implements View.OnClickListener {
                 image = context.getResources().getDrawable(R.drawable.sourdough);
             else if(imageName == "toast.jpg")
                 image = context.getResources().getDrawable(R.drawable.toast);
-            else if(imageName == "icecream.jpg")
-                image = context.getResources().getDrawable(R.drawable.icecream);
+            else if(imageName == "berrycake.jpg")
+                image = context.getResources().getDrawable(R.drawable.berrycake);
+            else if(imageName == "chicken.jpg")
+                image = context.getResources().getDrawable(R.drawable.chicken);
+            else if(imageName == "chocolatecake.jpg")
+                image = context.getResources().getDrawable(R.drawable.chocolatecake);
+            else if(imageName == "crostini.jpg")
+                image = context.getResources().getDrawable(R.drawable.crostini);
+            else if(imageName == "meat.jpg")
+                image = context.getResources().getDrawable(R.drawable.meat);
+            else if(imageName == "mushroomtart.jpg")
+                image = context.getResources().getDrawable(R.drawable.mushroomtart);
+            else if(imageName == "shrimpplate.jpg")
+                image = context.getResources().getDrawable(R.drawable.shrimpplate);
+            else if(imageName == "shrimpsalad.jpg")
+                image = context.getResources().getDrawable(R.drawable.shrimpsalad);
+            else if(imageName == "tuna.jpg")
+                image = context.getResources().getDrawable(R.drawable.tuna);
+            else if(imageName == "start.jpg")
+                image = context.getResources().getDrawable(R.drawable.start);
+            else if(imageName == "kakor.jpg")
+                image = context.getResources().getDrawable(R.drawable.kakor);
             else
                 image = context.getResources().getDrawable(R.drawable.ic_launcher);
 
@@ -111,6 +131,8 @@ public class FoodView extends Observable implements View.OnClickListener {
 
         ImageView imageV = new ImageView(context);
         imageV.setImageDrawable(image);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(300, 300);
+        imageV.setLayoutParams(layoutParams);
         layout.addView(imageV);
 
         TextView info = new TextView(context);

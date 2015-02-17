@@ -48,12 +48,13 @@
                         android:id="@+id/spinner1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
                         android:spinnerMode="dropdown"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
                         android:layout_toRightOf="@+id/textView"
                         android:layout_toLeftOf="@+id/textView2"
-                        android:layout_toStartOf="@+id/textView2" />
+                        android:layout_toStartOf="@+id/textView2"
+                        android:layout_alignParentTop="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
