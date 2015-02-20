@@ -120,7 +120,9 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         System.out.println("KLICK");
 
-        //TODO fixa "instanceoff om man orkar"
+        if( !(v instanceof CustomView))
+            return;
+
         CustomView clicked = (CustomView) v;
 
         //ingredients
@@ -204,45 +206,13 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
             else {
                 if(dish != null) {
 
-                    //TODO fixa fulhacket
-
                     String imageName = dish.getImage();
                     Drawable image;
-
-                    if(imageName == "bakedbrie.jpg")
-                        image = context.getResources().getDrawable(R.drawable.bakedbrie);
-                    else if(imageName == "icecream.jpg")
-                        image = context.getResources().getDrawable(R.drawable.icecream);
-                    else if(imageName == "meatballs.jpg")
-                        image = context.getResources().getDrawable(R.drawable.meatballs);
-                    else if(imageName == "sourdough.jpg")
-                        image = context.getResources().getDrawable(R.drawable.sourdough);
-                    else if(imageName == "toast.jpg")
-                        image = context.getResources().getDrawable(R.drawable.toast);
-                    else if(imageName == "berrycake.jpg")
-                        image = context.getResources().getDrawable(R.drawable.berrycake);
-                    else if(imageName == "chicken.jpg")
-                        image = context.getResources().getDrawable(R.drawable.chicken);
-                    else if(imageName == "chocolatecake.jpg")
-                        image = context.getResources().getDrawable(R.drawable.chocolatecake);
-                    else if(imageName == "crostini.jpg")
-                        image = context.getResources().getDrawable(R.drawable.crostini);
-                    else if(imageName == "meat.jpg")
-                        image = context.getResources().getDrawable(R.drawable.meat);
-                    else if(imageName == "mushroomtart.jpg")
-                        image = context.getResources().getDrawable(R.drawable.mushroomtart);
-                    else if(imageName == "shrimpplate.jpg")
-                        image = context.getResources().getDrawable(R.drawable.shrimpplate);
-                    else if(imageName == "shrimpsalad.jpg")
-                        image = context.getResources().getDrawable(R.drawable.shrimpsalad);
-                    else if(imageName == "tuna.jpg")
-                        image = context.getResources().getDrawable(R.drawable.tuna);
-                    else if(imageName == "start.jpg")
-                        image = context.getResources().getDrawable(R.drawable.start);
-                    else if(imageName == "kakor.jpg")
-                        image = context.getResources().getDrawable(R.drawable.kakor);
-                    else
-                        image = context.getResources().getDrawable(R.drawable.ic_launcher);
+                    if(imageName.contains(".jpg")) {
+                        imageName = imageName.substring(0,imageName.length()-4);
+                    }
+                    image = context.getResources().getDrawable(context.getResources()
+                            .getIdentifier(imageName, "drawable", context.getPackageName()));
 
                     IV.setImageDrawable(image);
 

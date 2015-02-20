@@ -11,12 +11,6 @@ public class DinnerModel implements IDinnerModel{
     Set<Dish> menu = new HashSet<Dish>();
     Set<Ingredient> allIngredients = new HashSet<Ingredient>();
 	
-	/**
-	 * TODO: For Lab2 you need to implement the IDinnerModel interface.
-	 * When you do this you will have all the needed fields and methods
-	 * for the dinner planner (number of guests, selected dishes, etc.). 
-	 */
-	
 	
 	/**
 	 * The constructor of the overall model. Set the default values here
@@ -225,7 +219,7 @@ public class DinnerModel implements IDinnerModel{
                 result = d;
             }
         }
-        return result; //todo try-catch etc
+        return result;
     }
 
     @Override
@@ -276,7 +270,6 @@ public class DinnerModel implements IDinnerModel{
         menu.remove(dish); //enough?!?!?
     }
 
-    //TODO fixa så det funkar
     @Override
     public void removeTypeFromMenu(int type) {
         //System.out.println("Removing type " + type + " from menu");

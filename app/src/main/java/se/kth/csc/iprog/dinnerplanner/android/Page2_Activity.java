@@ -96,6 +96,14 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
         dessert.addObserver(this);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        model.removeTypeFromMenu(1);
+        model.removeTypeFromMenu(2);
+        model.removeTypeFromMenu(3);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -144,7 +152,6 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
     @Override
     public void update(Observable observable, Object data) {
 
-        //TODO fixa så man kan ta bort saker från menyn
         if (observable instanceof FoodList) {
             //System.out.println("its a FoodView");
             FoodList temp = (FoodList) observable;
@@ -172,23 +179,8 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
             }
         }
 
-        //TODO Byta ut detta till model.gettotlafmenupricetrorjagdetheter()
-        float price = 0;//model.getTotalMenuPrice();
-
-        if(starter.getSelected() != null) {
-            price += calculatePrice(starter.getSelected()) * model.getNumberOfGuests();
-        }
-
-        if(main.getSelected() != null) {
-            price += calculatePrice(main.getSelected()) * model.getNumberOfGuests();
-        }
-
-        if(dessert.getSelected() != null) {
-            price += calculatePrice(dessert.getSelected()) * model.getNumberOfGuests();
-        }
-
-
-        totalCost.setText("Total Cost: " + (float)((int) (price*100))/100 + "kr");
+        float price = model.getTotalMenuPrice() * model.getNumberOfGuests();
+        totalCost.setText("Total Cost: " + price + "kr");
     }
 
     //calculate price for 1p
