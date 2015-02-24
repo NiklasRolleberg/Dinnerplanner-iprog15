@@ -64,6 +64,7 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         //Model
         model = ((DinnerPlannerApplication) this.getApplication()).getModel();
+        model.addObserver(this);
 
         //starter
         starter = new FoodList((LinearLayout) findViewById(R.id.foodlist01));
@@ -97,8 +98,23 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        //System.out.println("OnResume");
+        //model.addObserver(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //System.out.println("OnPause");
+        //model.deleteObservers();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
+        model.deleteObservers();
         model.removeTypeFromMenu(1);
         model.removeTypeFromMenu(2);
         model.removeTypeFromMenu(3);
@@ -127,9 +143,7 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //System.out.println("Nu valdes: "+ items[position] + " participants" );
         model.setNumberOfGuests(Integer.parseInt(items[position]));
-
-        update(null,null);
-
+        //System.out.println("Spinner changed -> model.hasChanged");
     }
 
     @Override
@@ -157,21 +171,21 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
             FoodList temp = (FoodList) observable;
 
             if(temp.equals(starter)) {
-                System.out.println("Starter");
+                //m.out.println("Starter");
                 model.removeTypeFromMenu(1);
                 Dish dish = starter.getSelected();
                 if (dish != null)
                     model.addDishToMenu(dish);
             }
             else if (temp.equals(main)) {
-                System.out.println("Main");
+                //System.out.println("Main");
                 model.removeTypeFromMenu(2);
                 Dish dish = main.getSelected();
                 if (dish != null)
                     model.addDishToMenu(dish);
             }
             else if (temp.equals(dessert)) {
-                System.out.println("Dessert");
+                //System.out.println("Dessert");
                 model.removeTypeFromMenu(3);
                 Dish dish = dessert.getSelected();
                 if (dish != null)
@@ -181,15 +195,5 @@ public class Page2_Activity extends Activity implements AdapterView.OnItemSelect
 
         float price = model.getTotalMenuPrice() * model.getNumberOfGuests();
         totalCost.setText("Total Cost: " + price + "kr");
-    }
-
-    //calculate price for 1p
-    private int calculatePrice(Dish d) {
-        int price = 0;
-        for(Ingredient I : d.getIngredients()) {
-            if(I != null)
-                price += I.getPrice();
-        }
-        return price;
     }
 }

@@ -92,6 +92,20 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
         list.addView(starterCV);
         list.addView(mainCV);
         list.addView(dessertCV);
+
+        //Set default as ingredients
+        ingredientsCV.setBackgroundColor(Color.RED);
+        starterCV.setBackgroundColor(Color.TRANSPARENT);
+        mainCV.setBackgroundColor(Color.TRANSPARENT);
+        dessertCV.setBackgroundColor(Color.TRANSPARENT);
+        type.setText("INGREDIENTS");
+        String s = "";
+        for(Ingredient i : model.getAllIngredients()) {
+            if(i != null)
+                s += i.getName() + "  " + i.getQuantity()*model.getNumberOfGuests() + " " + i.getUnit() + "\n";
+        }
+        info.setText(s);
+
     }
 
     @Override
@@ -118,7 +132,7 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        System.out.println("KLICK");
+        //System.out.println("KLICK");
 
         if( !(v instanceof CustomView))
             return;
@@ -141,7 +155,6 @@ public class Page3_Activity extends Activity implements View.OnClickListener{
             }
 
             info.setText(s);
-
         }
         //stater
         else if(clicked.equals(starterCV)) {
